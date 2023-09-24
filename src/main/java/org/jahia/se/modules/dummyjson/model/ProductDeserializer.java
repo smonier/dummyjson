@@ -35,7 +35,7 @@ public class ProductDeserializer extends StdDeserializer<Product> {
         String thumbnail = node.get("thumbnail").textValue();
         String images = node.get("images").toString();
 
-        return new Product(id, title, description, price, discountPercentage, rating, stock, brand, category, thumbnail, images);
+        return new Product();
     }
 }
 

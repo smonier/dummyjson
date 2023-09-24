@@ -1,28 +1,22 @@
 package org.jahia.se.modules.dummyjson.taglibs;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jahia.se.modules.dummyjson.model.Product;
+import org.jahia.se.modules.dummyjson.model.ProductsWrapper;
 import org.jahia.se.modules.dummyjson.cache.CrunchifyInMemoryCache;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import org.json.JSONObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.util.*;
-import java.util.zip.GZIPInputStream;
+
 
 
 /**
@@ -35,6 +29,7 @@ public class DummyJsonService {
 
     private static String apiKey;
     private static CrunchifyInMemoryCache<String, String> cache = new CrunchifyInMemoryCache<String, String>(1200, 500, 50);
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Activate
     public void activate(Map<String, ?> props) {
@@ -60,18 +55,17 @@ public class DummyJsonService {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://dummyjson.com/products"))
+                    .uri(new URI("https://dummyjson.com/products"))
                     .build();
-
+                    
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() == 200) {
-                String responseBody = response.body();
-                ObjectMapper objectMapper = new ObjectMapper();
-                products = objectMapper.readValue(responseBody, new TypeReference<List<Product>>() {});
-            } else {
-                logger.error("GET request failed. Response Code: " + response.statusCode());
-            }
+            
+            String responseBody = response.body();
+            ObjectMapper objectMapper = new ObjectMapper();
+            ProductsWrapper productsWrapper = objectMapper.readValue(responseBody, ProductsWrapper.class);
+            
+            products = productsWrapper.getProducts();
+            // Now you have access to the "products" key.
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,19 +81,23 @@ public class DummyJsonService {
                     .uri(URI.create("https://dummyjson.com/products/category/"+category))
                     .build();
 
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() == 200) {
-                String responseBody = response.body();
-                ObjectMapper objectMapper = new ObjectMapper();
-                products = objectMapper.readValue(responseBody, new TypeReference<List<Product>>() {});
-            } else {
-                logger.error("GET request failed. Response Code: " + response.statusCode());
-            }
+                    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            String responseBody = response.body();
+            ObjectMapper objectMapper = new ObjectMapper();
+            ProductsWrapper productsWrapper = objectMapper.readValue(responseBody, ProductsWrapper.class);
+            
+            products = productsWrapper.getProducts();
+            // Now you have access to the "products" key.
         } catch (Exception e) {
             e.printStackTrace();
         }
         logger.info("Product List: "+products.toString());
         return products;
     }
+
+    private static List<Product> deserializeProducts(String json) throws IOException {
+        return new ObjectMapper().readValue(json, new TypeReference<List<Product>>() {});
+    }
+    
 }

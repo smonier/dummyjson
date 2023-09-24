@@ -46,12 +46,12 @@
                     <div class="card-body">
                         <h5 class="card-title">${product.getTitle()}</h5>
                         <p class="card-text">${product.getDescription()}</p>
-                        <p class="card-text">Price: ${product.price}</p>
+<!--                      <p class="card-text">Price: ${product.price}</p>
                         <p class="card-text">Stock: ${product.stock}</p>
                         <p class="card-text">Brand: ${product.brand}</p>
                         <p class="card-text">Category: ${product.category}</p>
                         <p class="card-text">Rating: ${product.rating}</p>
-                        <p class="card-text">Discount: ${product.discountPercentage}%</p>
+                        <p class="card-text">Discount: ${product.discountPercentage}%</p>>--> 
                     </div>
                 </div>
             </div>

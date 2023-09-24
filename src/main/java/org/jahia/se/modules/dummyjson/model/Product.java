@@ -1,134 +1,53 @@
 package org.jahia.se.modules.dummyjson.model;
 
+import java.util.List;
+
 public class Product {
-    private String id;
+
+    private int id;
     private String title;
     private String description;
-    private String price;
-    private String discountPercentage;
-    private String rating;
-    private String stock;
+    private double price;
+    private double discountPercentage;
+    private double rating;
+    private int stock;
     private String brand;
     private String category;
     private String thumbnail;
-    private String images;
+    private List<String> images; // Assuming multiple images are possible
 
-    public Product(String id, String title, String description, String price, String discountPercentage, String rating, String stock, String brand, String category, String thumbnail, String images) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.discountPercentage = discountPercentage;
-        this.rating = rating;
-        this.stock = stock;
-        this.brand = brand;
-        this.category = category;
-        this.thumbnail = thumbnail;
-        this.images = images;
-    }
+    // Getters and Setters for all fields
 
-    public String getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String getTitle() {
-        return title;
-    }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public double getDiscountPercentage() { return discountPercentage; }
+    public void setDiscountPercentage(double discountPercentage) { this.discountPercentage = discountPercentage; }
 
-    public String getDescription() {
-        return description;
-    }
+    public double getRating() { return rating; }
+    public void setRating(double rating) { this.rating = rating; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
 
-    public String getPrice() {
-        return price;
-    }
+    public String getBrand() { return brand; }
+    public void setBrand(String brand) { this.brand = brand; }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public String getDiscountPercentage() {
-        return discountPercentage;
-    }
+    public String getThumbnail() { return thumbnail; }
+    public void setThumbnail(String thumbnail) { this.thumbnail = thumbnail; }
 
-    public void setDiscountPercentage(String discountPercentage) {
-        this.discountPercentage = discountPercentage;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getStock() {
-        return stock;
-    }
-
-    public void setStock(String stock) {
-        this.stock = stock;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                ", discountPercentage='" + discountPercentage + '\'' +
-                ", rating='" + rating + '\'' +
-                ", stock='" + stock + '\'' +
-                ", brand='" + brand + '\'' +
-                ", category='" + category + '\'' +
-                ", thumbnail='" + thumbnail + '\'' +
-                ", images='" + images + '\'' +
-                '}';
-    }
+    public List<String> getImages() { return images; }
+    public void setImages(List<String> images) { this.images = images; }
 }
