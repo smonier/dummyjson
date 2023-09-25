@@ -37,7 +37,7 @@
 
 <c:choose>
     <c:when test="${category == 'none'}">
-        <c:set var="products" value="${dj:fetchProducts()}"/>
+        <c:set var="products" value="${dj:fetchRawProducts()}"/>
     </c:when>
     <c:otherwise>
         <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>

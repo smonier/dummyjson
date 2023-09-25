@@ -22,4 +22,11 @@
         <function-class>org.jahia.se.modules.dummyjson.taglibs.DummyJsonService</function-class>
         <function-signature>java.util.List fetchProductsByCategory(java.lang.String)</function-signature>
     </function>
+    <function>
+        <description>Fetch Raw Products From file</description>
+        <name>fetchRawProducts</name>
+        <function-class>org.jahia.se.modules.dummyjson.taglibs.DummyJsonService</function-class>
+        <function-signature>java.util.List fetchRawProducts()</function-signature>
+    </function>
 </taglib>
+
