@@ -1,5 +1,6 @@
 package org.jahia.se.modules.dummyjson.taglibs;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jahia.se.modules.dummyjson.model.Product;
 import org.jahia.se.modules.dummyjson.model.ProductsWrapper;
@@ -11,6 +12,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
@@ -51,30 +54,40 @@ public class DummyJsonService {
 
 
     public static List<Product> fetchProducts() {
-        List<Product> products = new ArrayList<>();
+        List<Product> PRODUCTS_ARRAY_LIST = new ArrayList<>();
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://dummyjson.com/products"))
+                    .uri(new URI("https://dummyjson.com/products?limit=100"))
                     .build();
                     
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            
-            String responseBody = response.body();
-            ObjectMapper objectMapper = new ObjectMapper();
-            ProductsWrapper productsWrapper = objectMapper.readValue(responseBody, ProductsWrapper.class);
-            
-            products = productsWrapper.getProducts();
+
+            JSONObject currentsApiJsonObject = new JSONObject(response.body());
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                logger.info(productsArray.toString());
+                PRODUCTS_ARRAY_LIST = mapper.readValue(productsArray.toString(), new TypeReference<List<Product>>() {
+                });
+
+            } catch (Exception e) {
+                logger.error("Error parsing JSONObject in JSONArray");
+                e.printStackTrace();
+            }
+
             // Now you have access to the "products" key.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.info("Product List: "+products.toString());
-        return products;
+        logger.info("Product List: "+PRODUCTS_ARRAY_LIST.toString());
+        return PRODUCTS_ARRAY_LIST;
     }
 
     public static List<Product> fetchProductsByCategory(String category) {
-        List<Product> products = new ArrayList<>();
+        List<Product> PRODUCTS_ARRAY_LIST = new ArrayList<>();
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -82,18 +95,28 @@ public class DummyJsonService {
                     .build();
 
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            
-            String responseBody = response.body();
-            ObjectMapper objectMapper = new ObjectMapper();
-            ProductsWrapper productsWrapper = objectMapper.readValue(responseBody, ProductsWrapper.class);
-            
-            products = productsWrapper.getProducts();
+
+            JSONObject currentsApiJsonObject = new JSONObject(response.body());
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                logger.info(productsArray.toString());
+                PRODUCTS_ARRAY_LIST = mapper.readValue(productsArray.toString(), new TypeReference<List<Product>>() {
+                });
+
+            } catch (Exception e) {
+                logger.error("Error parsing JSONObject in JSONArray");
+                e.printStackTrace();
+            }
+
             // Now you have access to the "products" key.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.info("Product List: "+products.toString());
-        return products;
+        logger.info("Product List: "+PRODUCTS_ARRAY_LIST.toString());
+        return PRODUCTS_ARRAY_LIST;
     }
 
     private static List<Product> deserializeProducts(String json) throws IOException {

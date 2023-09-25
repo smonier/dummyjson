@@ -86,6 +86,12 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.3</version> <!-- Use the latest version -->
         </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>[6.0,6.2)</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     
     <build>
@@ -97,6 +103,24 @@
                 <configuration>
                     <instructions>
                         <Jahia-Depends>default</Jahia-Depends>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Import-Package>com.jahia.module.fontawesome,${jahia.plugin.projectPackageImport},*</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
