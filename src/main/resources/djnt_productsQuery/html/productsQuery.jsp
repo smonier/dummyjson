@@ -11,6 +11,8 @@
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 <%@ taglib prefix="dj" uri="http://www.jahia.org/tags/dummyjson" %>
 <%@ taglib prefix="fa" uri="http://font-awesome.com/taglibs" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.text.NumberFormat" %>
 
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
@@ -27,6 +29,8 @@
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
 <jcr:nodeProperty node="${currentNode}" name="bannerText" var="bannerText"/>
 <jcr:nodeProperty node="${currentNode}" name="category" var="category"/>
+<jcr:nodeProperty node="${currentNode}" name="buttonLabel" var="buttonLabel"/>
+
 
 <c:if test="${jcr:isNodeType(currentNode, 'djmix:owlcarouselAdvancedSettings')}">
     <c:set var="options" value="${currentNode.properties.options.string}"/>
@@ -64,6 +68,7 @@
                                     </div>
                                     <div class="thumb-content">
                                         <h5>${product.getTitle()}</h5>
+                                        <span class="category">${product.getCategory()}</span>
                                         <p>${product.getDescription()}</p>
                                         <div class="star-rating">
                                             <ul class="list-inline">
@@ -71,8 +76,17 @@
                                             </ul>
                                         </div>
                                         <p class="item-price"><b>${product.getBrand()}</b></p>
-                                        <p class="item-price"><b>EUR ${product.getPrice()}</b></p>
-                                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                                        <c:choose>
+                                            <c:when test="${product.getDiscountPercentage() > 0}">
+                                                <fmt:formatNumber value="${product.getPrice() - ((product.getDiscountPercentage() / 100.0) * product.getPrice())}" type="number" pattern="#.##" var="roundedNumber" />
+                                                <p class="item-price"><strike>${product.getPrice()}</strike> <b>EUR ${roundedNumber}</b></p>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p class="item-price"><b>EUR ${product.getPrice()}</b></p>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <a href="#" class="btn btn-primary">${buttonLabel}</a>
                                     </div>
                                 </div>
                             </div>
