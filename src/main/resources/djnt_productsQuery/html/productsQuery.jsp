@@ -28,6 +28,11 @@
 <jcr:nodeProperty node="${currentNode}" name="bannerText" var="bannerText"/>
 <jcr:nodeProperty node="${currentNode}" name="category" var="category"/>
 
+<c:if test="${jcr:isNodeType(currentNode, 'djmix:owlcarouselAdvancedSettings')}">
+    <c:set var="options" value="${currentNode.properties.options.string}"/>
+    <c:set var="class" value="${currentNode.properties.class.string}"/>
+</c:if>
+
 
 <c:set var="rand">
     <%= java.lang.Math.round(java.lang.Math.random() * 10000) %>
@@ -66,7 +71,7 @@
                                             </ul>
                                         </div>
                                         <p class="item-price"><b>${product.getBrand()}</b></p>
-                                        <p class="item-price"><b>€ ${product.getPrice()}</b></p>
+                                        <p class="item-price"><b>EUR ${product.getPrice()}</b></p>
                                         <a href="#" class="btn btn-primary">Add to Cart</a>
                                     </div>
                                 </div>
@@ -78,36 +83,7 @@
 </div>
 
 <script>
-    $('#${carouselId}').owlCarousel({
-        autoplay: true,
-        rewind: true, /* use rewind if you don't want loop */
-        margin: 20,
-        /*
-       animateOut: 'fadeOut',
-       animateIn: 'fadeIn',
-       */
-        responsiveClass: true,
-        autoHeight: true,
-        autoplayTimeout: 7000,
-        smartSpeed: 800,
-        nav: true,
-        navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
-        responsive: {
-            0: {
-                items: 1
-            },
-
-            600: {
-                items: 3
-            },
-
-            1024: {
-                items: 4
-            },
-
-            1366: {
-                items: 4
-            }
-        }
-    });
+    <%--console.log("options string: ",${options});--%>
+    <%--console.log("options out string: ",${not empty options?options:''});--%>
+    $('#${carouselId}').owlCarousel(${not empty options?options:''});
 </script>

@@ -8,4 +8,9 @@
 [djnt:productsQuery] > jnt:content, mix:title, djmix:dummyJson, jmix:list
  - bannerText (string, richtext) internationalized
  - category (string, choicelist) < 'none','smartphones','laptops','fragrances','skincare','groceries','home-decoration','furniture','tops','womens-dresses','womens-shoes','mens-shirts','mens-shoes','mens-watches','womens-watches','womens-bags','womens-jewellery','sunglasses','automotive','motorcycle','lighting'
- 
+
+[djmix:owlcarouselAdvancedSettings] mixin
+ extends = djnt:productsQuery
+ itemtype = content
+ - options (string, textarea[height='360']) indexed=no
+ - class (string) indexed=no
