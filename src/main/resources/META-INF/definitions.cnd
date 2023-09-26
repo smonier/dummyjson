@@ -11,7 +11,16 @@
  - buttonLabel (string)
 
 [djmix:owlcarouselAdvancedSettings] mixin
- extends = djnt:productsQuery
+ extends = djnt:productsQuery, djnt:promoCarousel
  itemtype = content
  - options (string, textarea[height='360']) indexed=no
  - class (string) indexed=no
+
+[djnt:promoCarousel] > jnt:content, mix:title, djmix:dummyJson, jmix:list
+ - bannerText (string, richtext) internationalized
+ - j:type (string, choicelist[subnodetypes = 'jnt:page,jmix:basicContent,jmix:editorialContent,jmix:retrievableContent',resourceBundle]) indexed=no mandatory
+ - startNode (weakreference)
+ - subNodesView (string, choicelist[templates=subnodes,resourceBundle,image,dependentProperties='j:type']) nofulltext itemtype = layout
+
+[djnt:promotion] > jnt:content, mix:title, djmix:dummyJson, seumix:linkTo
+ - promoImage (weakreference, picker[type='image'])

@@ -54,43 +54,46 @@
 </c:choose>
 
 
-<div class="container-xl">
+<div class="container-xl dj">
     <div class="row">
         <div class="col-md-12">
             <h2><b>${bannerText}</b></h2>
-            <div class="owl-carousel owl-theme owl-drag animated carousel" id="${carouselId}">
-                    <c:forEach var="product" items="${products}" varStatus="status">
-                            <div class="item px-2">
-                                <div class="thumb-wrapper">
-                                    <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                    <div class="img-box">
-                                        <img src="${product.getThumbnail()}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="thumb-content">
-                                        <h5>${product.getTitle()}</h5>
-                                        <span class="category">${product.getCategory()}</span>
-                                        <p>${product.getDescription()}</p>
-                                        <div class="star-rating">
-                                            <ul class="list-inline">
-                                                <span style="--rating:${product.getRating()}"></span>
-                                            </ul>
-                                        </div>
-                                        <p class="item-price"><b>${product.getBrand()}</b></p>
-                                        <c:choose>
-                                            <c:when test="${product.getDiscountPercentage() > 0}">
-                                                <fmt:formatNumber value="${product.getPrice() - ((product.getDiscountPercentage() / 100.0) * product.getPrice())}" type="number" pattern="#.##" var="roundedNumber" />
-                                                <p class="item-price"><strike>${product.getPrice()}</strike> <b>EUR ${roundedNumber}</b></p>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <p class="item-price"><b>EUR ${product.getPrice()}</b></p>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                        <a href="#" class="btn btn-primary">${buttonLabel}</a>
-                                    </div>
-                                </div>
+            <div class="owl-carousel owl-theme owl-drag animated dj-carousel" id="${carouselId}">
+                <c:forEach var="product" items="${products}" varStatus="status">
+                    <div class="item px-2">
+                        <div class="thumb-wrapper">
+                            <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                            <div class="img-box">
+                                <img src="${product.getThumbnail()}" class="img-fluid" alt="">
                             </div>
-                    </c:forEach>
+                            <div class="thumb-content">
+                                <h5>${product.getTitle()}</h5>
+                                <span class="category">${product.getCategory()}</span>
+                                <p>${product.getDescription()}</p>
+                                <div class="star-rating">
+                                    <ul class="list-inline">
+                                        <span style="--rating:${product.getRating()}"></span>
+                                    </ul>
+                                </div>
+                                <p class="item-price"><b>${product.getBrand()}</b></p>
+                                <c:choose>
+                                    <c:when test="${product.getDiscountPercentage() > 0}">
+                                        <fmt:formatNumber
+                                                value="${product.getPrice() - ((product.getDiscountPercentage() / 100.0) * product.getPrice())}"
+                                                type="number" pattern="#.##" var="roundedNumber"/>
+                                        <p class="item-price"><strike>${product.getPrice()}</strike>
+                                            <b>EUR ${roundedNumber}</b></p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="item-price"><b>EUR ${product.getPrice()}</b></p>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                <a href="#" class="btn btn-primary">${buttonLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
