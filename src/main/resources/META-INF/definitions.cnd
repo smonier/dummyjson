@@ -24,3 +24,5 @@
 
 [djnt:promotion] > jnt:content, mix:title, djmix:dummyJson, seumix:linkTo
  - promoImage (weakreference, picker[type='image'])
+
+[djnt:headingFromPage] > jnt:content, timix:content, timix:industrial
