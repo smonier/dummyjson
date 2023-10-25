@@ -62,8 +62,8 @@
     <description>This is the custom module (dummy Json Products Module) for running on a Jahia server.</description>
 
     <scm>
-        <connection>scm:dummy:uri</connection>
-        <developerConnection>scm:dummy:uri</developerConnection>
+        <connection>scm:git@github.com:smonier/dummyjson.git</connection>
+        <developerConnection>scm:git@github.com:smonier/dummyjson.git</developerConnection>
     </scm>
 
     <repositories>

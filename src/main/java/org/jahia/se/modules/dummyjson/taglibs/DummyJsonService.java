@@ -91,7 +91,7 @@ public class DummyJsonService {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://raw.githubusercontent.com/smonier/dummyjson/main/src/main/resources/files/consumable.json"))
+                    .uri(new URI("https://raw.githubusercontent.com/smonier/dummyjson/main/src/main/resources/files/insurance.json"))
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

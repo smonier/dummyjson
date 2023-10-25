@@ -1,0 +1,102 @@
+{"products": [
+    {
+        "id": 201,
+        "title": "Homeowner's Insurance",
+        "description": "Comprehensive coverage against damages to your home, including natural disasters, theft, and accidents.",
+        "price": 1200.00,
+        "discountPercentage": 10.0,
+        "rating": 4.7,
+        "stock": 1000,
+        "brand": "HomeSecure",
+        "category": "Home Insurance",
+        "thumbnail": "https://mfmbankers.com/wp-content/uploads/2023/04/An-In-Depth-Guide-About-Homeowners-Insurance.jpg",
+        "images": [
+            "home_insurance_1.jpg",
+            "home_insurance_2.jpg"
+        ]
+    },
+    {
+        "id": 202,
+        "title": "Auto Insurance",
+        "description": "Protect yourself against potential car accidents, theft, and damages.",
+        "price": 800.00,
+        "discountPercentage": 7.0,
+        "rating": 4.5,
+        "stock": 800,
+        "brand": "AutoGuard",
+        "category": "Vehicle Insurance",
+        "thumbnail": "https://thumbor.forbes.com/thumbor/fit-in/1290x/https://www.forbes.com/advisor/wp-content/uploads/2022/03/driver-after-crash.jpeg.jpg",
+        "images": [
+            "auto_insurance_1.jpg",
+            "auto_insurance_2.jpg"
+        ]
+    },
+    {
+        "id": 203,
+        "title": "Travel Insurance",
+        "description": "Coverage for unforeseen events during your travels, including medical emergencies, cancellations, and baggage loss.",
+        "price": 50.00,
+        "discountPercentage": 5.0,
+        "rating": 4.3,
+        "stock": 500,
+        "brand": "TravelSafe",
+        "category": "Travel Insurance",
+        "thumbnail": "https://i.insider.com/63c99bf42a1e600018b8c401?width=1136&format=jpeg",
+        "images": [
+            "travel_insurance_1.jpg",
+            "travel_insurance_2.jpg"
+        ]
+    },
+    {
+        "id": 204,
+        "title": "Life Insurance",
+        "description": "Provide financial security to your loved ones in the event of your passing.",
+        "price": 600.00,
+        "discountPercentage": 8.0,
+        "rating": 4.8,
+        "stock": 700,
+        "brand": "LifeGuard",
+        "category": "Life Insurance",
+        "thumbnail": "https://s0.hfdstatic.com/sites/the_hartford/pubimgs/1616643541430.jpg?v=2022-06-27_135054438",
+        "images": [
+            "life_insurance_1.jpg",
+            "life_insurance_2.jpg"
+        ]
+    },
+    {
+        "id": 205,
+        "title": "Pet Insurance",
+        "description": "Coverage for your pets' medical bills, surgeries, and other health-related expenses.",
+        "price": 250.00,
+        "discountPercentage": 6.0,
+        "rating": 4.6,
+        "stock": 400,
+        "brand": "PetCare",
+        "category": "Pet Insurance",
+        "thumbnail": "https://www.heathvets.com/wp-content/uploads/2019/02/pet-insurance-types-heath-vets-burgess-hill-vet-wp.jpg",
+        "images": [
+            "pet_insurance_1.jpg",
+            "pet_insurance_2.jpg"
+        ]
+    },
+    {
+        "id": 206,
+        "title": "Health Insurance",
+        "description": "Coverage for medical expenses including hospital stays, surgeries, and routine check-ups.",
+        "price": 1100.00,
+        "discountPercentage": 9.0,
+        "rating": 4.9,
+        "stock": 900,
+        "brand": "HealthFirst",
+        "category": "Health Insurance",
+        "thumbnail": "https://www.expatica.com/app/uploads/sites/5/2014/05/health-insurance-france-1920x1080.jpg",
+        "images": [
+            "health_insurance_1.jpg",
+            "health_insurance_2.jpg"
+        ]
+    }
+],
+"total": 100,
+"skip": 0,
+"limit": 50
+}
