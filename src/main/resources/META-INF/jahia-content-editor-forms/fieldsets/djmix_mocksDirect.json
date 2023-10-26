@@ -1,0 +1,16 @@
+{
+    "name": "djmix:mocksDirect",
+    "fields": [
+      {
+        "name": "dj:products",
+        "selectorType": "CodeMirror",
+        "selectorOptions":[
+          {
+            "name": "mode",
+            "value" : "javascript"
+          }
+        ]
+      }
+    ]
+  }
+  

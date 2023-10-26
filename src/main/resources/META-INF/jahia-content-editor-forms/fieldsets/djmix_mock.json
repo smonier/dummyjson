@@ -1,0 +1,41 @@
+{
+    "name": "djmix:mocks",
+    "description": "",
+    "dynamic": false,
+    "fields": [
+      {
+        "name": "dj:mocksSource",
+        "selectorType": "Choicelist",
+        "valueConstraints": [
+          {
+            "value": {
+              "type": "String",
+              "value": "reference"
+            },
+            "displayValue": "Dummy Json Feed",
+            "propertyList": [
+              {
+                "name": "addMixin",
+                "value": "djmix:mocksReference"
+              }
+            ]
+          },
+          {
+            "value": {
+              "type": "String",
+              "value": "direct"
+            },
+            "displayValue": "Write your own json for products",
+            "propertyList": [
+              {
+                "name": "addMixin",
+                "value": "djmix:mocksDirect"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+  

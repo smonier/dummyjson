@@ -2,12 +2,12 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <djnt = 'http://www.jahia.org/dummyjson/nt/1.0'>
 <djmix = 'http://www.jahia.org/dummyjson/mix/1.0'>
+<dj = 'http://modules.se.jahia.org/dummyjson/1.0'>
 
 [djmix:dummyJson] > jmix:droppableContent, jmix:visibleInContentTree, jmix:editorialContent mixin
 
-[djnt:productsQuery] > jnt:content, mix:title, djmix:dummyJson, jmix:list
+[djnt:productsQuery] > jnt:content, mix:title, djmix:mocks, djmix:dummyJson, jmix:list
  - bannerText (string, richtext) internationalized
- - category (string, choicelist) = 'none' < 'none','smartphones','laptops','fragrances','skincare','groceries','home-decoration','furniture','tops','womens-dresses','womens-shoes','mens-shirts','mens-shoes','mens-watches','womens-watches','womens-bags','womens-jewellery','sunglasses','automotive','motorcycle','lighting'
  - buttonLabel (string)
 
 [djmix:owlcarouselAdvancedSettings] mixin
@@ -26,3 +26,20 @@
  - promoImage (weakreference, picker[type='image'])
 
 [djnt:headingFromPage] > jnt:content, timix:content, timix:industrial
+
+[djmix:mocksDef] mixin
+ - dj:products (string) indexed=no
+
+[djmix:mocksReference] > jmix:dynamicFieldset mixin
+ extends = djmix:mocks
+ - dj:category (string, choicelist) < 'smartphones','laptops','fragrances','skincare','groceries','home-decoration','furniture','tops','womens-dresses','womens-shoes','mens-shirts','mens-shoes','mens-watches','womens-watches','womens-bags','womens-jewellery','sunglasses','automotive','motorcycle','lighting'
+
+[djmix:mocksDirect] > jmix:dynamicFieldset, djmix:mocksDef mixin
+ extends = djmix:mocks
+
+[djmix:mocks] mixin
+// itemtype = webappConfiguration
+ itemtype = content
+ - dj:mocksSource (string) indexed=no
+
+

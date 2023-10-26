@@ -28,8 +28,12 @@
 
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
 <jcr:nodeProperty node="${currentNode}" name="bannerText" var="bannerText"/>
-<jcr:nodeProperty node="${currentNode}" name="category" var="category"/>
+<jcr:nodeProperty node="${currentNode}" name="dj:category" var="category"/>
 <jcr:nodeProperty node="${currentNode}" name="buttonLabel" var="buttonLabel"/>
+<jcr:nodeProperty node="${currentNode}" name="dj:mocksSource" var="mockSource"/>
+<jcr:nodeProperty node="${currentNode}" name="dj:products" var="customCode"/>
+
+
 
 
 <c:if test="${jcr:isNodeType(currentNode, 'djmix:owlcarouselAdvancedSettings')}">
@@ -45,11 +49,14 @@
 
 
 <c:choose>
-    <c:when test="${category == 'none'}">
-        <c:set var="products" value="${dj:fetchRawProducts()}"/>
+    <c:when test="${mockSource == 'direct'}">
+        <c:set var="products" value="${dj:processCustomCode(customCode)}"/>
+    </c:when>
+    <c:when test="${mockSource == 'reference'}">
+        <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>
     </c:when>
     <c:otherwise>
-        <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>
+        <c:set var="products" value="${dj:fetchRawProducts()}"/>
     </c:otherwise>
 </c:choose>
 

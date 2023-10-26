@@ -85,7 +85,31 @@ public class DummyJsonService {
         logger.info("Product List: "+PRODUCTS_ARRAY_LIST.toString());
         return PRODUCTS_ARRAY_LIST;
     }
+    public static List<Product> processCustomCode(String customCode) {
+        List<Product> PRODUCTS_ARRAY_LIST = new ArrayList<>();
+        try {
+            JSONObject currentsApiJsonObject = new JSONObject(customCode);
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
 
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                logger.info(productsArray.toString());
+                PRODUCTS_ARRAY_LIST = mapper.readValue(productsArray.toString(), new TypeReference<List<Product>>() {
+                });
+
+            } catch (Exception e) {
+                logger.error("Error parsing JSONObject in JSONArray");
+                e.printStackTrace();
+            }
+
+            // Now you have access to the "products" key.
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        logger.info("Product List: "+PRODUCTS_ARRAY_LIST.toString());
+        return PRODUCTS_ARRAY_LIST;
+    }
     public static List<Product> fetchRawProducts() {
         List<Product> PRODUCTS_ARRAY_LIST = new ArrayList<>();
         try {

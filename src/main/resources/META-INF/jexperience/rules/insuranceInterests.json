@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "id": "formMapping__InsuranceInterests",
+    "name": "user-portal-InsuranceInterests",
+    "description": "user portal module auto mapping",
+    "scope": "ins-website",
+    "systemTags": ["formMappingRule"]
+  },
+  "priority": -1,
+  "condition": {
+    "type": "booleanCondition",
+    "parameterValues": {
+      "operator": "and",
+      "subConditions": [
+        {
+          "parameterValues": {
+            "formId": "loggedUserEnergyPreferences"
+          },
+          "type": "formEventCondition"
+        },
+        {
+          "parameterValues": {
+            "scope": "ins-website"
+          },
+          "type": "sourceEventPropertyCondition"
+        }
+      ]
+    }
+  },
+  "actions": [{
+    "parameterValues": {
+      "setPropertyName": "properties(insuranceInterests)",
+      "setPropertyStrategy": "alwaysSet",
+      "setPropertyValue": "eventProperty::properties(categories2insuranceInterests)"
+    },
+    "type": "setPropertyAction"
+  }]
+}
