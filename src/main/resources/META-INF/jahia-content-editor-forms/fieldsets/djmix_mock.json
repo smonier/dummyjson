@@ -32,6 +32,19 @@
                 "value": "djmix:mocksDirect"
               }
             ]
+          },
+          {
+            "value": {
+              "type": "String",
+              "value": "url"
+            },
+            "displayValue": "Specify an URL",
+            "propertyList": [
+              {
+                "name": "addMixin",
+                "value": "djmix:mocksUrl"
+              }
+            ]
           }
         ]
       }

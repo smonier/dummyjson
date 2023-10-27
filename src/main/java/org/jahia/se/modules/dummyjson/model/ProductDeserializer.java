@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,7 +66,7 @@ public class ProductDeserializer extends StdDeserializer<Product> {
         productAsset.setBrand(productBrand.textValue());
         JsonNode productCategory = productNode.at(PRODUCT_CATEGORY);
         productAsset.setCategory(productCategory.textValue());
-        JsonNode productThumbnail = productNode.at(PRODUCT_CATEGORY);
+        JsonNode productThumbnail = productNode.at(PRODUCT_THUMBNAIL);
         productAsset.setThumbnail(productThumbnail.textValue());
         ObjectMapper objectMapper = new ObjectMapper();
         // Define the type of the collection you want (List of Strings in this case)

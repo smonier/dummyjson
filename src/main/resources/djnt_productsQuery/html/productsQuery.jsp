@@ -32,8 +32,7 @@
 <jcr:nodeProperty node="${currentNode}" name="buttonLabel" var="buttonLabel"/>
 <jcr:nodeProperty node="${currentNode}" name="dj:mocksSource" var="mockSource"/>
 <jcr:nodeProperty node="${currentNode}" name="dj:products" var="customCode"/>
-
-
+<jcr:nodeProperty node="${currentNode}" name="dj:url" var="jsonUrl"/>
 
 
 <c:if test="${jcr:isNodeType(currentNode, 'djmix:owlcarouselAdvancedSettings')}">
@@ -54,6 +53,9 @@
     </c:when>
     <c:when test="${mockSource == 'reference'}">
         <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>
+    </c:when>
+    <c:when test="${mockSource == 'url'}">
+        <c:set var="products" value="${dj:processUrl(jsonUrl)}"/>
     </c:when>
     <c:otherwise>
         <c:set var="products" value="${dj:fetchRawProducts()}"/>

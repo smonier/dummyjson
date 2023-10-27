@@ -37,6 +37,11 @@
 [djmix:mocksDirect] > jmix:dynamicFieldset, djmix:mocksDef mixin
  extends = djmix:mocks
 
+
+[djmix:mocksUrl] > jmix:dynamicFieldset mixin
+ extends = djmix:mocks
+ - dj:url (string) indexed=no
+ 
 [djmix:mocks] mixin
 // itemtype = webappConfiguration
  itemtype = content
