@@ -32,7 +32,7 @@
 
 [djmix:mocksReference] > jmix:dynamicFieldset mixin
  extends = djmix:mocks
- - dj:category (string, choicelist) < 'smartphones','laptops','fragrances','skincare','groceries','home-decoration','furniture','tops','womens-dresses','womens-shoes','mens-shirts','mens-shoes','mens-watches','womens-watches','womens-bags','womens-jewellery','sunglasses','automotive','motorcycle','lighting'
+ - dj:category (string, choicelist) < 'none','smartphones','laptops','fragrances','skincare','groceries','home-decoration','furniture','tops','womens-dresses','womens-shoes','mens-shirts','mens-shoes','mens-watches','womens-watches','womens-bags','womens-jewellery','sunglasses','automotive','motorcycle','lighting'
 
 [djmix:mocksDirect] > jmix:dynamicFieldset, djmix:mocksDef mixin
  extends = djmix:mocks
@@ -41,7 +41,7 @@
 [djmix:mocksUrl] > jmix:dynamicFieldset mixin
  extends = djmix:mocks
  - dj:url (string) indexed=no
- 
+
 [djmix:mocks] mixin
 // itemtype = webappConfiguration
  itemtype = content

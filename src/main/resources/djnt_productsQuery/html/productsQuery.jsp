@@ -52,7 +52,14 @@
         <c:set var="products" value="${dj:processCustomCode(customCode)}"/>
     </c:when>
     <c:when test="${mockSource == 'reference'}">
-        <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>
+        <c:choose>
+            <c:when test="${category == 'none'}">
+                <c:set var="products" value="${dj:fetchProducts()}"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="products" value="${dj:fetchProductsByCategory(category)}"/>
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:when test="${mockSource == 'url'}">
         <c:set var="products" value="${dj:processUrl(jsonUrl)}"/>
