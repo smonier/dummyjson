@@ -64,7 +64,7 @@ public class DummyJsonService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             JSONObject currentsApiJsonObject = new JSONObject(response.body());
-            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.optString("products"));
 
             try {
                 ObjectMapper mapper = new ObjectMapper();
@@ -89,8 +89,9 @@ public class DummyJsonService {
         List<Product> PRODUCTS_ARRAY_LIST = new ArrayList<>();
         try {
             JSONObject currentsApiJsonObject = new JSONObject(customCode);
-            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
-
+            logger.info(currentsApiJsonObject.toString());
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.optString("products"));
+            logger.info(productsArray.toString());
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -105,6 +106,7 @@ public class DummyJsonService {
 
             // Now you have access to the "products" key.
         } catch (Exception e) {
+            logger.error("Error parsing 2 JSONObject in JSONArray");
             e.printStackTrace();
         }
         logger.info("Product List: "+PRODUCTS_ARRAY_LIST.toString());
@@ -121,7 +123,7 @@ public class DummyJsonService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             JSONObject currentsApiJsonObject = new JSONObject(response.body());
-            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.optString("products"));
 
             try {
                 ObjectMapper mapper = new ObjectMapper();
@@ -154,7 +156,7 @@ public class DummyJsonService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             JSONObject currentsApiJsonObject = new JSONObject(response.body());
-            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.optString("products"));
 
             try {
                 ObjectMapper mapper = new ObjectMapper();
@@ -186,7 +188,7 @@ public class DummyJsonService {
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             JSONObject currentsApiJsonObject = new JSONObject(response.body());
-            JSONArray productsArray = new JSONArray(currentsApiJsonObject.getString("products"));
+            JSONArray productsArray = new JSONArray(currentsApiJsonObject.optString("products"));
 
             try {
                 ObjectMapper mapper = new ObjectMapper();
