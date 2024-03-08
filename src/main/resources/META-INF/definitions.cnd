@@ -10,6 +10,10 @@
  - bannerText (string, richtext) internationalized
  - buttonLabel (string)
 
+[djnt:usersQuery] > jnt:content, mix:title, djmix:mocks, djmix:dummyJson, jmix:list
+ - bannerText (string, richtext) internationalized
+ - buttonLabel (string)
+
 [djmix:owlcarouselAdvancedSettings] mixin
  extends = djnt:productsQuery, djnt:promoCarousel
  itemtype = content

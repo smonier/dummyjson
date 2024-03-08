@@ -40,4 +40,16 @@
         <function-class>org.jahia.se.modules.dummyjson.taglibs.DummyJsonService</function-class>
         <function-signature>java.util.List processUrl(java.lang.String)</function-signature>
     </function>
+    <function>
+        <description>Retreive all Users</description>
+        <name>getUsersFromUrl</name>
+        <function-class>org.jahia.se.modules.dummyjson.taglibs.DummyJsonService</function-class>
+        <function-signature>java.util.List getUsersFromUrl(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <description>Search Users</description>
+        <name>searchUsers</name>
+        <function-class>org.jahia.se.modules.dummyjson.taglibs.DummyJsonService</function-class>
+        <function-signature>java.util.List searchUsers(java.lang.String, java.lang.String)</function-signature>
+    </function>
 </taglib>
