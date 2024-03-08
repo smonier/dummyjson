@@ -142,9 +142,13 @@ type="org.jahia.services.render.URLGenerator"
                                     class="job_post">${user.company.getTitle()}</span>
                                 <p>${user.company.getDepartment()}
                                 </p>
+                                <p>${user.getEmail()}
+                                <br/>
+                                    ${user.getPhone()}
+                                </p>
                                 <div>
-                                    <button
-                                        class="btn btn-primary btn-round">${buttonLabel}</button>
+                                    <a href="mailto:${user.getEmail()}"
+                                        class="btn btn-primary btn-round">${buttonLabel}</a>
 
                                 </div>
                                 <p
