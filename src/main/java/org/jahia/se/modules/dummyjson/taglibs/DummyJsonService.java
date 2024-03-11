@@ -232,7 +232,7 @@ public class DummyJsonService {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                logger.info(usersArray.toString());
+                logger.info("Fetch All Users : " + usersArray.toString());
                 USERS_ARRAY_LIST = mapper.readValue(usersArray.toString(), new TypeReference<List<User>>() {
                 });
 
@@ -245,7 +245,7 @@ public class DummyJsonService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.info("Product List: "+USERS_ARRAY_LIST.toString());
+        logger.info("Users List: "+USERS_ARRAY_LIST.toString());
         return USERS_ARRAY_LIST;
     }
 
@@ -266,7 +266,7 @@ public class DummyJsonService {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                logger.info(usersArray.toString());
+                logger.info("Search Users : "+usersArray.toString());
                 USERS_ARRAY_LIST = mapper.readValue(usersArray.toString(), new TypeReference<List<User>>() {
                 });
 
@@ -279,7 +279,7 @@ public class DummyJsonService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.info("Product List: "+USERS_ARRAY_LIST.toString());
+        logger.info("Users List: "+USERS_ARRAY_LIST.toString());
         return USERS_ARRAY_LIST;
     }
 }
